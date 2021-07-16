@@ -1,4 +1,4 @@
-This repo explains how to scrape real estate list data using multiple spiders/crawlers, clean and transform the collected data, and load the data into a database or a Excel file. 
+This repo explains how to scrape real estate list data using multiple spiders/crawlers, clean and transform the collected data, and load the data into a database or an Excel file. 
 It also explains how to run python scripts automatically every day.  Different approaches will be covered and compared.
 
 Repo main documents:
@@ -10,6 +10,6 @@ Repo main documents:
   - You can adjust scrape speed. If you scrape too fast, you could be blocked. Also, some lists could be skipped, so make sure to verify whether you have scraped all the lists you want
 
 - Compile data_clean_transform.ipynb
-  - It is another Jupyter notebook that includes the script to combine all the files with the scraped data, steps to clean and transform the data.
+  - It is another Jupyter notebook that includes the script to combine all the files with the scraped data, steps to clean and transform the data, and save the result into an Excel file.
   - Each file records the real estate lists date for only one day. So if you scrape every day, you will have more and more files.
-  - The script will remove the duplicated lists as well as the advertisement lists. Also, it will add a date for each list 
+  - The script will remove the duplicated lists as well as the advertisement lists. Also, it will add a date for each list.
