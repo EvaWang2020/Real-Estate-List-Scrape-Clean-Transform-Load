@@ -18,6 +18,6 @@ Repo main documents:
   - If you can run the script every day, in long term, this script is better than the one inside the above Jupyter notebook because there will be too many files to combine using the script from the above notebook
 
 - Compile data data _clean_transform2.ipynb
-  - if you want to save the cleaned list data into a database rather than into a CSV file, you can refer to this file.
+  - If you want to save the cleaned list data into a database rather than into a CSV file, you can refer to this file.
 
 
