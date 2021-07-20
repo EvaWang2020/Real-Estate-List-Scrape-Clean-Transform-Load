@@ -8,16 +8,16 @@ Repo main documents:
   - One list can appear multiple times
   - You can adjust scrape speed. If you scrape too fast, you could be blocked. Also, some lists could be skipped, so make sure to verify whether you have scraped all the lists you want
 
-- Compile data data _clean_transform.ipynb
-  - It is another Jupyter notebook that includes the script to combine all the text files with the scraped data, steps to clean and transform the data and save the result into an Excel file.
+- Compile data data _clean_transform.py
+  - It is another Python script to combine all the text files with the scraped data, steps to clean and transform the data and save the result into an Excel file.
   - Each txt file records the total real estate lists date of those cities for one specific day. If you run the Python script to scrape data every day, you will gradually get many files to combine whenever you run the script in this note.
   - The script will remove the duplicated lists as well as advertisement lists. Also, it will add a date for each list record
 
-- Compile data data _clean_transform1.ipynb
-  - This notebook includes very similar Python script as the above. Instead of combining all the files, the script uses the append approach: it will use clean and transform data from the files generated today and then append the results as rows to an existing CSV file 
+- Compile data data _clean_transform1.py
+  - This file includes very similar Python script as the above. Instead of combining all the files, the script uses the append approach: it will use clean and transform data from the files generated today and then append the results as rows to an existing CSV file 
   - If you can run the script every day, in long term, this script is better than the one inside the above Jupyter notebook because there will be too many files to combine using the script from the above notebook
 
-- Compile data data _clean_transform2.ipynb
+- Compile data data _clean_transform2.py
   - If you want to save the cleaned list data into a database rather than into a CSV file, you can refer to this file.
 
 
