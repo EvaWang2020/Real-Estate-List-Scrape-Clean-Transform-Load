@@ -20,4 +20,7 @@ Repo main documents:
 - Compile data data _clean_transform2.py
   - If you want to save the cleaned list data into a database rather than into a CSV file, you can refer to this file.
 
+- SQLQuery.sql
+  - It is a SQL script to create a table in the target database. The table needs to be created first before runnning file Compile data data _clean_transform2.py
+
 
