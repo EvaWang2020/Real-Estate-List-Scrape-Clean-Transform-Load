@@ -58,9 +58,11 @@ df['Bathroom_qty']= df.Bathroom_qty.str.split(' ').str[0]
 df['Floor_size']= df.Floor_size.str.split(' ').str[0]
 
 # extract widith and depth of the land
-df['Land_width']= df.Land_size.str.split('x').str[0]
-df['Land_depth']= df.Land_size.str.split('x').str[1]
-df['Land_depth']= df.Land_depth.str.split(' ').str[1]
+df['Land_width'] = df.Land_size.str.split('x').str[0]
+df['Land_width'] = df.Land_width.str.split(' ').str[0]
+df['Land_depth'] = df.Land_size.str.split('x').str[1]
+df['Land_depth'] = df.Land_depth.str.split(' ').str[1]
+
 df.drop(columns=['Land_size'])
 
 # When there is no value for column 'bd', 'ba', 'size', it means that list is advertisment and could apear mutiple times the same day. We should remove them, but we will keep the only list with bedroom and bathroom quantity
