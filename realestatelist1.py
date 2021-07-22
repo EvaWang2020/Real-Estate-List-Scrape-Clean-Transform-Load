@@ -37,10 +37,13 @@ class BlogSpider(scrapy.Spider):
     name = 'blogspider'
 
     def __init__(self, city_region):
-        # self.name = name
         # this is the starting URL
-        self.start_urls = [f'https://www.rew.ca/properties/areas/{city_region}/page/1']
-
+        # the website only allows to scrape at most 25 pages for each city using below URL, so some lists from the cities are missing. 
+        # If you want to scrape the whole list of each city in Vancouver, consdier using another wbeside such as https://www.findvancouverhouses.com
+        # However, this above website does not allow to scrape land size for houses easily
+        self.start_urls = [
+            f'https://www.rew.ca/properties/areas/{city_region}/page/1']
+            
     def parse(self, response):
         # print(response.text)
         # Reponse is the scraped result
