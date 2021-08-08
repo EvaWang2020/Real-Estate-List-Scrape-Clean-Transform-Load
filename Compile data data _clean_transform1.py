@@ -50,6 +50,7 @@ for current_file in file_list_per_date:
                 'List_type': item['list_Type'],
                 # extract the date from current_file. Depending on your file path, the start number and ending numbers are different
                 'Date': current_file[l+15:l+25],
+                'thumbnail': item['URL']
             }
             rows.append(row)
 
