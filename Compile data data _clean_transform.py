@@ -75,7 +75,8 @@ df = df[df['Bedroom_qty'].notnull()]   # if you want to exclude list for land, u
 df = df.drop_duplicates()  
 
 # drop the list with both empty empty land size and empty land width. It is likely a imcomplte list for land 
-df =df.dropna(subset=['Floor_size','Land_width'], how='all')                           
+df = df.dropna(subset=['Floor_size','Land_width'], how='all')   
+df = df.where(pd.notnull(df), None)
 # print(df)
 
 df.to_csv(file_path1, mode='a', header=True,index=False)                                
