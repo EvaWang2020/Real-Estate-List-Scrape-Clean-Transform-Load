@@ -19,6 +19,14 @@ def extact_property(pattern, list):
     filtered_list = [e for e in list if pattern in e]
     return filtered_list[-1] if len(filtered_list) >= 1 else None
 
+
+# download image and transfer into binary array
+def iamge_url_to_blob(url):
+    response = requests.get(url)
+    image_bytes = io.BytesIO(response.content)
+    return image_bytes.read()
+
+
 rows = []
 
 #find the start postion of certain string in the file path. It will be used to extract file date showing on file name 
@@ -45,7 +53,9 @@ for current_file in file_list_per_date:
                 'City_region': item['City'][0] if len(item['City']) > 1 else None,
                 'City': item['City'][-1] if len(item['City'])>=1 else None,
                 'List_type': item['list_Type'],
-                'Date':current_file[l+15:l+25],   # extract the date from current_file. Depending on your file path, the start number and ending numbers are different 
+                # extract the date from current_file. Depending on your file path, the start number and ending numbers are different 
+                'Date':current_file[l+15:l+25],   
+                'thumbnail': item['URL']
             }
             rows.append(row)
 
@@ -84,9 +94,16 @@ cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER='+server+';DATABASE='+database
 cursor = cnxn.cursor()
 
 for index, row in df.iterrows():
-    cursor.execute("INSERT INTO RealEstate.dbo.TotalList(Price, Bedroom_qty, Bathroom_qty, Floor_size, Land_width, Land_depth, Address, City_region, City, List_type, Date) values(?,?,?,?,?,?,?,?,?,?,?)", row.Price, row.Bedroom_qty, row.Bathroom_qty, row.Floor_size, row.Land_width, row.Land_depth, row.Address, row.City_region, row.City, row.List_type,row.Date )    # here (?,?,?,?,?,?,?,?,?,?) is corresponding to the number of columns. How many "?" means how many columns
+    thumbnail_image_url = row.thumbnail
+    image_bytes = iamge_url_to_blob(thumbnail_image_url)
+    # tranform binary into blob type
+    image_blob = pyodbc.Binary(image_bytes)
+    print('Inserting ' + row.Address)
+    cursor.execute("INSERT INTO RealEstate.dbo.TotalList(Price, Bedroom_qty, Bathroom_qty, Floor_size, Land_width, Land_depth, Address, City_region, City, List_type, Date, Image_blob) values(?,?,?,?,?,?,?,?,?,?,?,?)", row.Price, row.Bedroom_qty, row.Bathroom_qty,
+                   row.Floor_size, row.Land_width, row.Land_depth, row.Address, row.City_region, row.City, row.List_type, row.Date, image_blob)    # here (?,?,?,?,?,?,?,?,?,?,?) is corresponding to the number of columns. How many "?" means how many columns
+    print('Finished inserting ' + row.Address)
 cnxn.commit()
 cursor.close()
-                           
+       
 
 
