@@ -77,6 +77,7 @@ df = df.drop_duplicates()
 
 # drop the list with both empty empty land size and empty land width. It is likely a imcomplte list for land
 df = df.dropna(subset=['Floor_size', 'Land_width'], how='all')
+df = df.where(pd.notnull(df), None)
 
 # print(df)
 
