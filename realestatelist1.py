@@ -55,7 +55,9 @@ class BlogSpider(scrapy.Spider):
                     'li/text()').getall(),
                 'Address': title.css('.displaypanel-section::text').get().strip(),
                 'City': title.css('.l-pipedlist.displaypanel-info').xpath('li/text()').getall(),
-                'list_Type': strip_text(title.css('.clearfix.hidden-xs').css('.displaypanel-info::text').get())
+                'list_Type': strip_text(title.css('.clearfix.hidden-xs').css('.displaypanel-info::text').get()),
+                # here @src means to get the value of parameter src
+                'URL': title.css('.displaypanel-photo').css('img.img-responsive').xpath('@src').get()
             }  # yield is used to return the result
 
         # response.css('a[rel="next"]') is a value
