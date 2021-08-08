@@ -14,6 +14,7 @@ City_region varchar(50),
 City varchar(50),
 List_type varchar(50),
 Date Date NOT NULL,
+Image_blob varbinary(max),
 );
 
 
