@@ -50,7 +50,11 @@ for current_file in file_list_per_date:
                 'List_type': item['list_Type'],
                 # extract the date from current_file. Depending on your file path, the start number and ending numbers are different
                 'Date': current_file[l+15:l+25],
-                'thumbnail': item['URL']
+                # if you want to save list picutres in Excel, you can add below to include image URL 
+                # As the URL will disappear once the list get deleted, you have to download the picture from the URL. Otherwise, the URL is useless to include 
+                # vba code (https://www.extendoffice.com/documents/excel/4212-excel-insert-image-from-url.html) can convert image URLs to actual images
+                # but you have to think whether the file will be too big for Excel 
+                #'thumbnail': item['URL']
             }
             rows.append(row)
 
