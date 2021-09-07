@@ -15,8 +15,6 @@ file_list_per_date = glob.glob(f'{path}{str(date)}-*.txt')
 print(file_list_per_date)
 
 # create a function to find fhe element matching certain patterns
-
-
 def extact_property(pattern, list):
     filtered_list = [e for e in list if pattern in e]
     return filtered_list[-1] if len(filtered_list) >= 1 else None
@@ -33,7 +31,7 @@ for current_file in file_list_per_date:
         print(str(f))
         json_object = json.load(f)
 
-        # take the lists from the jason file
+        # take the lists from the jason object
         listings = json_object['listings']
 
         for item in listings:
@@ -81,10 +79,11 @@ df = df.drop_duplicates()
 
 # drop the list with both empty empty land size and empty land width. It is likely a imcomplte list for land
 df = df.dropna(subset=['Floor_size', 'Land_width'], how='all')
+# change NAN to None
 df = df.where(pd.notnull(df), None)
 
 # print(df)
-
+# `a' means open for writing
 if not os.path.isfile(file_path1):
     df.to_csv(file_path1, mode='a', header=True, index=False)
 else:
