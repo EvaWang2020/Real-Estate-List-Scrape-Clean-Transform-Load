@@ -25,7 +25,7 @@ if os.path.isfile(file_path):
 else:
     pass
 
-
+# this help avoid failing when striping text if elment is none 
 def strip_text(element):
     if element:
         return element.strip()
