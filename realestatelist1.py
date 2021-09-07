@@ -46,7 +46,7 @@ class BlogSpider(scrapy.Spider):
             
     def parse(self, response):
         # print(response.text)
-        # Reponse is the scraped result
+        # response is the scraped result
         for title in response.css('.displaypanel-body'):
             yield {
                 # depending on what you want to collect, the detail is different
