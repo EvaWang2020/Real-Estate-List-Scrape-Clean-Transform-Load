@@ -1,4 +1,4 @@
-This repo explains how to scrape real estate list data using multiple spiders/crawlers, and then clean and transform the collected data, and load the data into a database or an Excel file. 
+This repo explains how to scrape real estate list data using multiple spiders/crawlers, and then clean, transform, and load the data into a database or an Excel file. 
 
 Repo main documents:
 - realestatelist1.py
